@@ -150,12 +150,10 @@ $data = mysqli_query($con, $sql);
 
 
     <!-- part of download button of pdf -->
-  
 
     <div class="container">
         <div class="container my-5">
         <h1>All Data</h1>
-
         </div>
         <table class="table table-stripped">
             <thead>
@@ -185,10 +183,15 @@ $data = mysqli_query($con, $sql);
         </table>
     </div>
     <div class="container">
-        <form action="pdf_gen.php" method="POST">
-            <button type="submit" name="btn_pdf" class="btn btn-success">Download PDF</button>
+        <form action="pdf_gen.php" method="POST" target="_blank">
+            <button type="submit" name="btn_pdf" class="btn btn-success" target="_blank">Download PDF</button>
+            
         </form>
     </div>
+
+    <script>
+    
+</script>
 
 </body>
 

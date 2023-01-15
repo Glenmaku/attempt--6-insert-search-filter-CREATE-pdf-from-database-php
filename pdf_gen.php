@@ -1,20 +1,14 @@
 <?php 
 
-require_once './FPDF/fpdf.php';
-require_once 'code.php';
+require_once './FPDF/fpdf.php'; //connect sa .php file for cre8ing pdf file
+require_once 'code.php'; //connection
 $sql = "select * from homeownerdb3";
 $data = mysqli_query($con, $sql);
 
-
-
 if(isset($_POST['btn_pdf']))
-{   // DITO KO MUNA LALAGAY
-
-    
-    
+{   
     //check nyo nalang dito specifications http://www.fpdf.org
     //$pdf = new FPDF('P','mm','A4');
-    //
     $pdf = new FPDF('p', 'mm','legal');
     $pdf->AddPage();
 
@@ -23,14 +17,10 @@ if(isset($_POST['btn_pdf']))
         $pdf->Image('Laguna Hills Logo.jpg',85,6,50);
         // Line break
         $pdf->Ln(40);
-    // END
+    // END of page header
 
     // SetFont(). We choose Arial bold 16:
     $pdf->SetFont('Arial','B',10);
-
-
-
-    
 
     // Cell (width, height, txt, border, ln line break, align(Center))
     $pdf->Cell(20,10,'id', '1', '0' , 'C');
@@ -42,18 +32,15 @@ if(isset($_POST['btn_pdf']))
     $pdf->SetFont('Arial','B',9);
 
         while($row = mysqli_fetch_assoc($data))
-{
-    $pdf->Cell(20,10,$row['id'], '1', '0' , 'C');
-    $pdf->Cell(40,10,$row['firstname'], '1', '0' , 'C');
-    $pdf->Cell(40,10,$row['lastname'], '1', '0' , 'C');
-    $pdf->Cell(20,10,$row['age'], '1', '0' , 'C');
-    $pdf->Cell(20,10,$row['gender'], '1', '0' , 'C');
-    $pdf->Cell(60,10,$row['address'], '1', '1' , 'C');
+    {
+        $pdf->Cell(20,10,$row['id'], '1', '0' , 'C');
+        $pdf->Cell(40,10,$row['firstname'], '1', '0' , 'C');
+        $pdf->Cell(40,10,$row['lastname'], '1', '0' , 'C');
+        $pdf->Cell(20,10,$row['age'], '1', '0' , 'C');
+        $pdf->Cell(20,10,$row['gender'], '1', '0' , 'C');
+        $pdf->Cell(60,10,$row['address'], '1', '1' , 'C');
 
-}
-
-
-
+    }
 
     //Remark: the line break can also be done with Ln(). This method additionnaly allows to specify the height of the break.
 
