@@ -1,7 +1,7 @@
 <?php //session_start(); 
 
 require_once 'code.php';
-$sql = "select * from homeownerdb3";
+$sql = "select * from admin_accounts";
 $data = mysqli_query($con, $sql);
 ?>
 
@@ -147,10 +147,7 @@ $data = mysqli_query($con, $sql);
         </div>
 
     </div>
-
-
-    <!-- part of download button of pdf -->
-
+    
     <div class="container">
         <div class="container my-5">
         <h1>All Data</h1>
@@ -182,6 +179,8 @@ $data = mysqli_query($con, $sql);
             </thead>
         </table>
     </div>
+<!-- part of download button of pdf -->
+
     <div class="container">
         <form action="pdf_gen.php" method="POST" target="_blank">
             <button type="submit" name="btn_pdf" class="btn btn-success" target="_blank">Download PDF</button>
